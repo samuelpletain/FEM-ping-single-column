@@ -1,0 +1,58 @@
+$primary: hsl(223, 87%, 63%);
+$secondary: hsl(223, 100%, 88%);
+$tertiary: hsl(354, 100%, 66%);
+$neutral-400: hsl(0, 0%, 59%);
+$neutral-900: hsl(209, 33%, 12%);
+
+$font-size: 20px;
+$font-family: "Libre Franklin", sans-serif;
+$font-weight-light: 300;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+html {
+	font-family: $font-family;
+	font-weight: $font-weight-semi-bold;
+	font-size: $font-size;
+}
+
+body {
+	padding: 4rem 1rem 1.5rem;
+}
+
+.header {
+	margin-bottom: 1.5rem;
+	&__logo {
+		margin: auto;
+		display: block;
+		transform: scale(.5);
+	}
+}
+
+.main {
+	text-align: center;
+	&__title {
+		margin-bottom: 1rem;
+	}
+	&__dashboard {
+		width: 100%;
+		display: block;
+	}
+}
+
+.title {
+	font-weight: $font-weight-light;
+	&--bold {
+		font-weight: $font-weight-bold;
+	}
+}
+
+.footer {
+	text-align: center;
+	&__socials {
+
+	}
+	&__copyright {
+		font-weight: $font-weight-light;
+	}
+}
