@@ -3,6 +3,7 @@ $secondary: hsl(223, 100%, 88%);
 $tertiary: hsl(354, 100%, 66%);
 $neutral-400: hsl(0, 0%, 59%);
 $neutral-900: hsl(209, 33%, 12%);
+$white: #fff;
 
 $font-size: 20px;
 $font-family: "Libre Franklin", sans-serif;
@@ -10,14 +11,25 @@ $font-weight-light: 300;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 
+@mixin breakpoint() {
+	@media only screen and (min-width: 700px) {
+		@content;
+	}
+}
+
 html {
 	font-family: $font-family;
-	font-weight: $font-weight-semi-bold;
+	font-weight: $font-weight-light;
 	font-size: $font-size;
+	color: $neutral-400;
 }
 
 body {
-	padding: 4rem 1rem 1.5rem;
+	padding: 4rem 1rem .5rem;
+	@include breakpoint() {
+		max-width: 700px;
+		margin: auto;
+	}
 }
 
 .header {
@@ -26,16 +38,115 @@ body {
 		margin: auto;
 		display: block;
 		transform: scale(.5);
+		@include breakpoint() {
+			transform: scale(.8);
+		}
 	}
 }
 
 .main {
 	text-align: center;
+	@include breakpoint() {
+		padding: 0 3rem;
+	}
 	&__title {
 		margin-bottom: 1rem;
+		font-size: 1.1rem;
+		@include breakpoint() {
+			font-size: 2rem;
+		}
+	}
+	&__subtitle {
+		font-size: .6rem;
+		color: $neutral-900;
+		margin-bottom: 1.5rem;
+		@include breakpoint() {
+			font-size: .8rem;
+		}
 	}
 	&__dashboard {
 		width: 100%;
+		display: block;
+		margin-top: 3rem;
+		@include breakpoint() {
+			margin-top: 2rem;
+		}
+	}	
+}
+
+.form {
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: column;
+	@include breakpoint()	{
+		display: grid;
+		grid-template-columns: 1fr 170px;
+		gap: .5rem;
+	}
+	&__input, &__button {
+		border-radius: 20px;
+		padding: .5rem 2rem;
+		border: 1px solid $primary;
+		margin-bottom: .5rem;
+		@include breakpoint() {
+			padding: .75rem 1.25rem;
+			border-radius: 25px;
+		}
+	}
+	&__input {
+		border-color: $secondary;
+		color: $neutral-900;
+		@include breakpoint() {
+			margin-bottom: 0;
+		}
+		&::placeholder {
+			color: $secondary;
+		}
+		&:focus {
+			border-color: $primary;
+		}
+		&:focus-visible {
+			outline: 1px solid $primary;
+		}
+	}
+	&__error_message {
+		color: $tertiary;
+		font-size: .5rem;
+		margin-bottom: 1rem;
+		@include breakpoint() {
+			order: 3;
+			text-align: left;
+			padding: 0 1.3rem;
+		}
+	}
+	&__button {
+		background-color: $primary;
+		color: $white;
+		font-weight: $font-weight-semi-bold;
+		box-shadow: 0px 4px 6px $secondary;
+		@include breakpoint() {
+			margin-bottom: 0;
+		}
+		&:hover {
+			background-color: lighten($primary, 10%);
+			border-color: lighten($primary, 10%);
+			cursor: pointer;
+		}
+	}
+}
+
+.input--error {
+	border-color: $tertiary;
+	margin-bottom: .25rem;
+	@include breakpoint() {
+		margin-bottom: 0;
+	}
+}
+
+.error_message--hidden {
+	display: none;
+	@include breakpoint() {
+		opacity: 0;
 		display: block;
 	}
 }
@@ -44,15 +155,40 @@ body {
 	font-weight: $font-weight-light;
 	&--bold {
 		font-weight: $font-weight-bold;
+		color: $neutral-900;
 	}
 }
 
 .footer {
 	text-align: center;
+	margin-top: 5rem;
+	@include breakpoint() {
+		margin-top: 3rem;
+	}
 	&__socials {
-
+		margin-bottom: 1.5rem;
 	}
 	&__copyright {
 		font-weight: $font-weight-light;
+		font-size: .6rem;
+		margin-bottom: 2rem;
+	}
+}
+
+.socials {
+	display: flex;
+	gap: .75rem;
+	justify-content: center;
+	&__icon {
+		color: $primary;
+		border: 1px solid $secondary;
+		padding: .4rem;
+		width: .75rem;
+		border-radius: 50%;
+		&:hover {
+			cursor: pointer;
+			background-color: $primary;
+			color: $white;
+		}
 	}
 }

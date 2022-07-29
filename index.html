@@ -11,8 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap" rel="stylesheet">
 
+  <script defer src="./assets/brands.js" type="module"></script>
+  <script defer src="./assets/fontawesome.js" type="module"></script>
+  
   <title>Frontend Mentor | Ping coming soon page</title>
-
+  
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
@@ -26,23 +29,25 @@
   <main class="main">
     <h1 class="main__title title">We are launching <span class="title--bold">soon!</span></h1>
     <p class="main__subtitle">Subscribe and get notified</p>
-    <form action="" method="post" class="main__form">
-      <input type="text" class="form__input">
+    <form action="" method="post" class="main__form form">
+      <input type="text" class="form__input input" placeholder="Your email address...">
+      <div class="form__error_message error_message error_message--hidden">Please provide a valid email address</div>
       <input type="button" value="Notify Me" class="form__button">
     </form>
-    <img src="./images/illustration-dashboard.png" alt="" class="main__dashboard">
+    <img src="./images/illustration-dashboard.png" alt="Ping dashboard" class="main__dashboard">
   </main>  
   <footer  class="footer">
     <div class="footer__socials socials">
-      <img src="" alt="" class="socials__icon">
-      <img src="" alt="" class="socials__icon">
-      <img src="" alt="" class="socials__icon">
-      <p class="footer__copyright">&copy; Copyright Ping. All rights reserved.</p>
+      <i class="socials__icon fa-brands fa-facebook-f fa-xs"></i>
+      <i class="socials__icon fa-brands fa-twitter fa-xs"></i>
+      <i class="socials__icon fa-brands fa-instagram fa-xs"></i>
     </div>
+    <p class="footer__copyright">&copy; Copyright Ping. All rights reserved.</p>
     <p class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Your Name Here</a>.
     </p>
   </footer>
+  <script src="./main.js" type="module"></script>
 </body>
 </html>

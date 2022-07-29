@@ -1,23 +1,24 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const input = document.getElementsByClassName("input")[0]
+const errorMessage = document.getElementsByClassName("error_message")[0]
+const button = document.getElementsByClassName("form__button")[0]
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+function validateEmailAddress() {
+  if (input.value.match(regex)) {
+    input.classList.remove("input--error")
+    errorMessage.classList.add("error_message--hidden")  
+  } else {
+    input.classList.add("input--error")
+    errorMessage.classList.remove("error_message--hidden")
+  }
+}
+
+input.addEventListener('focusout', validateEmailAddress)
+button.addEventListener('click', () => {
+  if (input.value.match(regex)) {
+    window.alert("We will be in touch soon!")
+  } else {
+    validateEmailAddress()
+  }
+})
